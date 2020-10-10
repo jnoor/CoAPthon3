@@ -187,7 +187,7 @@ class CoAP(object):
                 transaction.retransmit_stop = threading.Event()
                 self.to_be_stopped.append(transaction.retransmit_stop)
                 transaction.retransmit_thread = threading.Thread(target=self._retransmit,
-                                                                 name=str('%s-Retry-%d' % (threading.current_thread().name, message.mid)),
+                                                                 name=str('%s-Retry-%d' % (threading.current_thread().name, message.token)),
                                                                  args=(transaction, message, future_time, 0))
                 transaction.retransmit_thread.start()
 
